@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export function Navbar() {
   return (
-    <NavBr bg="dark" variant="dark">
+    <NavBr sticky="top" bg="dark" variant="dark">
       <Container>
         <Nav className="me-auto">
           <Nav.Link to="/" as={NavLink}>
@@ -16,7 +16,10 @@ export function Navbar() {
             About
           </Nav.Link>
         </Nav>
-        <Button style={{ width: "3rem", height: "3rem" }} variant="light">
+        <Button
+          style={{ width: "3rem", height: "3rem", position: "relative" }}
+          variant="light"
+        >
           <svg
             fill="#000000"
             version="1.1"
@@ -44,7 +47,18 @@ export function Navbar() {
               </g>{" "}
             </g>
           </svg>
-          <div className="rounded-circle d-flex bg-danger justify-content-center align-items-center">
+          <div
+            className="rounded-circle d-flex bg-danger justify-content-center align-items-center"
+            style={{
+              width: "1.5rem",
+              height: "1.5rem",
+              borderRadius: "50%",
+              backgroundColor: "rgb(255, 99, 132)",
+              color: "white",
+              top: "0",
+              bottom: "0",
+            }}
+          >
             3
           </div>
         </Button>
