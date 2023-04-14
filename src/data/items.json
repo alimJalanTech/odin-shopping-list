@@ -2,31 +2,31 @@
   {
     "id": 1,
     "name": "Men Combo Pack",
-    "price": 10.99,
+    "price": 1000,
     "imgUrl": "/img/boyset.jpg"
   },
   {
     "id": 2,
     "name": "Flask",
-    "price": 5,
+    "price": 500,
     "imgUrl": "/img/flask.jpg"
   },
   {
     "id": 3,
     "name": "Pink T-Shirt",
-    "price": 8,
+    "price": 800,
     "imgUrl": "/img/girltee.jpg"
   },
   {
     "id": 4,
     "name": "Top",
-    "price": 10,
+    "price": 1000,
     "imgUrl": "/img/top.jpg"
   },
   {
     "id": 5,
     "name": "Yellow T-Shirt",
-    "price": 5,
+    "price": 500,
     "imgUrl": "/img/yellowtee.jpg"
   }
 ]
