@@ -1,0 +1,32 @@
+.centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #FCE38A;
+    background-image: linear-gradient(to right, #FCE38A, #F38181, #6457A6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: #333333;
+    text-shadow: 1px 1px #FFFFFF;
+  }
+  
+  p {
+    font-size: 2rem;
+    text-align: center;
+    color: #555555;
+    text-shadow: 1px 1px #FFFFFF;
+  }
+  
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #F8E9A1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
