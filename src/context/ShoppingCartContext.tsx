@@ -24,7 +24,7 @@ type ShoppingCartContext = {
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
-export function useShoppingCart() {
+export function useShoppingCartContext() {
   return useContext(ShoppingCartContext);
 }
 
@@ -42,45 +42,33 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
-  function getItemQuantity(id: number) {
+
+  function getItemQuantity(id: number): number {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
 
-  function increaseCartQuantity(id: number) {
-    setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1 }];
-      } else {
-        return currItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
+  function increaseCartQuantity(id: number): void {
+    setCartItems((currItems) =>
+      currItems.find((item) => item.id === id)
+        ? currItems.map((item) =>
+            item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+          )
+        : [...currItems, { id, quantity: 1 }]
+    );
   }
 
-  function decreaseCartQuantity(id: number) {
-    setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id)?.quantity === 1) {
-        return currItems.filter((item) => item.id !== id);
-      } else {
-        return currItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
+  function decreaseCartQuantity(id: number): void {
+    setCartItems((currItems) =>
+      currItems.find((item) => item.id === id)?.quantity === 1
+        ? currItems.filter((item) => item.id !== id)
+        : currItems.map((item) =>
+            item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+          )
+    );
   }
-  function removeFromCart(id: number) {
-    setCartItems((currItems) => {
-      return currItems.filter((item) => item.id !== id);
-    });
+
+  function removeFromCart(id: number): void {
+    setCartItems((currItems) => currItems.filter((item) => item.id !== id));
   }
 
   return (
