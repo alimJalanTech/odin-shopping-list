@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { ShoppingCart } from "../components/ShoppingCart";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import storeItems from "../data/items.json";
 
 type ShoppingCartProviderProps = {
   children: ReactNode;
@@ -31,6 +32,13 @@ export function useShoppingCartContext() {
       "useShoppingCartContext: undefined value. ShoppingCartProvider must be a parent of this component."
     );
   return value;
+}
+
+export function calculateTotal(cartItems: { id: number; quantity: number }[]) {
+  return cartItems.reduce((total, cartItem) => {
+    const item = storeItems.find((i) => i.id === cartItem.id);
+    return total + (item?.price || 0) * cartItem.quantity;
+  }, 0);
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
