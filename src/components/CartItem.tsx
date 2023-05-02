@@ -1,6 +1,7 @@
 import { Button, Stack } from "react-bootstrap";
 import { useShoppingCartContext } from "../context/ShoppingCartContext";
 import storeItems from "../data/items.json";
+import { productImageStyles } from "../style/styles";
 
 type CartItemProps = {
   id: number;
@@ -16,7 +17,7 @@ export const CartItem: React.FC<CartItemProps> = ({ id, quantity }) => {
     <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
       <img
         src={item.imgUrl}
-        style={{ width: "125px", height: "75px", objectFit: "cover" }}
+        style={productImageStyles as React.CSSProperties}
       />
       <div className="me-auto">
         <div>

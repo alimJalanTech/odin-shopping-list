@@ -25,7 +25,12 @@ type ShoppingCartContext = {
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
 export function useShoppingCartContext() {
-  return useContext(ShoppingCartContext);
+  const value = useContext(ShoppingCartContext);
+  if (!value)
+    throw new Error(
+      "useShoppingCartContext: undefined value. ShoppingCartProvider must be a parent of this component."
+    );
+  return value;
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
